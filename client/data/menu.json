@@ -1,0 +1,203 @@
+{
+  "highlights": [
+    {
+      "id": "broth",
+      "title": "Nước dùng hầm 18 giờ",
+      "description": "Xương bò và giò heo được hầm 18 giờ với sả và gừng, giữ trọn vị ngọt tinh túy.",
+      "icon": "Clock"
+    },
+    {
+      "id": "ingredients",
+      "title": "Nguyên liệu chuẩn Huế",
+      "description": "Tất cả gia vị được tuyển chọn từ Huế: mắm ruốc, ớt sa tế, hành tím và nghệ.",
+      "icon": "Leaf"
+    },
+    {
+      "id": "fresh",
+      "title": "Topping tươi mỗi ngày",
+      "description": "Chả cua, chả bò và thịt bắp hoa được nhập mới mỗi sáng, đảm bảo độ tươi ngon.",
+      "icon": "Sparkles"
+    }
+  ],
+  "dishes": [
+    {
+      "id": "bun-bo-dac-biet",
+      "name": "Bún bò Huế đặc biệt",
+      "description": "Tô đầy đủ với giò heo, chả cua, thịt nạm và tiết mềm, nước dùng đậm đà.",
+      "price": 75000,
+      "category": "signature",
+      "spicyLevel": "Cay vừa",
+      "calories": 540,
+      "image": "https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=900&q=80",
+      "tags": ["Best seller", "Đặc biệt"]
+    },
+    {
+      "id": "bun-bo-hue-huyet",
+      "name": "Bún bò Huế giò huyết",
+      "description": "Thịt bắp hoa, huyết mềm, gân bò và chả cua thơm nức, vị cay đậm đà.",
+      "price": 69000,
+      "category": "signature",
+      "spicyLevel": "Cay nhiều",
+      "calories": 510,
+      "image": "https://images.unsplash.com/photo-1628585354850-5b43f5b0d327?auto=format&fit=crop&w=900&q=80",
+      "tags": ["Đặc trưng", "Thơm nồng"]
+    },
+    {
+      "id": "bun-bo-hue-chay",
+      "name": "Bún bò chay An Nhiên",
+      "description": "Nước dùng nấm hầm thanh ngọt, chả nấm và đậu hũ ky chiên giòn.",
+      "price": 62000,
+      "category": "vegetarian",
+      "spicyLevel": "Không cay",
+      "calories": 420,
+      "image": "https://images.unsplash.com/photo-1593253787226-567eda4ad32d?auto=format&fit=crop&w=900&q=80",
+      "tags": ["Healthy", "Chay"]
+    },
+    {
+      "id": "bun-bo-hue-sate",
+      "name": "Bún bò sa tế sả",
+      "description": "Sa tế sả tự làm, vị cay nồng nàn, kèm thịt tái và gân giòn.",
+      "price": 68000,
+      "category": "special",
+      "spicyLevel": "Cay nhiều",
+      "calories": 505,
+      "image": "https://images.unsplash.com/photo-1598514982361-c0c1a6886140?auto=format&fit=crop&w=900&q=80",
+      "tags": ["Sa tế", "Đậm đà"]
+    },
+    {
+      "id": "bun-bo-hue-tai",
+      "name": "Bún bò tái bắp hoa",
+      "description": "Thịt bắp hoa thái mỏng chín tái, giữ độ ngọt tự nhiên và mềm mại.",
+      "price": 65000,
+      "category": "signature",
+      "spicyLevel": "Cay nhẹ",
+      "calories": 495,
+      "image": "https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=900&q=80",
+      "tags": ["Thanh ngọt", "Tái"]
+    },
+    {
+      "id": "cha-cua-hue",
+      "name": "Chả cua Huế",
+      "description": "Chả cua nướng than hoa, dai giòn và thơm vị mắm ruốc.",
+      "price": 45000,
+      "category": "sides",
+      "spicyLevel": "Không cay",
+      "calories": 220,
+      "image": "https://images.unsplash.com/photo-1612874472257-1f82af0fb87d?auto=format&fit=crop&w=900&q=80",
+      "tags": ["Ăn kèm"]
+    },
+    {
+      "id": "nem-lui-hue",
+      "name": "Nem lụi Huế",
+      "description": "Nem lụi nướng, ăn kèm bánh tráng, rau sống và chén nước chấm đặc trưng.",
+      "price": 52000,
+      "category": "sides",
+      "spicyLevel": "Cay nhẹ",
+      "calories": 380,
+      "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
+      "tags": ["Ăn chơi", "Nướng"]
+    },
+    {
+      "id": "tra-sen-mat-ong",
+      "name": "Trà sen mật ong",
+      "description": "Trà sen ủ lạnh ngọt thanh, thêm mật ong rừng và lát cam tươi.",
+      "price": 39000,
+      "category": "beverages",
+      "spicyLevel": "",
+      "calories": 120,
+      "image": "https://images.unsplash.com/photo-1527169402691-feff5539e52c?auto=format&fit=crop&w=900&q=80",
+      "tags": ["Giải nhiệt", "Thơm mùi sen"]
+    }
+  ],
+  "combos": [
+    {
+      "id": "combo-sang",
+      "name": "Combo sáng năng lượng",
+      "description": "1 bún bò đặc biệt + 1 trà sen mật ong + chả cua",
+      "price": 155000,
+      "image": "https://images.unsplash.com/photo-1577401132921-b58b3684f34e?auto=format&fit=crop&w=900&q=80"
+    },
+    {
+      "id": "combo-gia-dinh",
+      "name": "Combo gia đình",
+      "description": "3 tô bún bò + nem lụi + trà sen cho cả nhà",
+      "price": 285000,
+      "image": "https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=900&q=80"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "testimonial-1",
+      "name": "Lan Anh",
+      "title": "Food Blogger",
+      "quote": "Nước dùng đậm đà mà không bị mặn, mùi sả thơm nổi bật. Topping đầy đặn khiến tôi luôn quay lại.",
+      "rating": 5,
+      "avatar": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80"
+    },
+    {
+      "id": "testimonial-2",
+      "name": "Tuấn Kiệt",
+      "title": "Doanh nhân",
+      "quote": "Không gian ấm cúng, phục vụ nhanh chóng. Tôi đặc biệt thích món bún bò sa tế sả đậm vị.",
+      "rating": 5,
+      "avatar": "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=200&q=80"
+    },
+    {
+      "id": "testimonial-3",
+      "name": "Ngọc Bích",
+      "title": "Nhân viên văn phòng",
+      "quote": "Tô bún bò chay thanh mát mà vẫn đầy đặn, rau sống sạch và rất nhiều loại cho mình chọn.",
+      "rating": 4,
+      "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80"
+    }
+  ],
+  "branches": [
+    {
+      "id": "quan1",
+      "name": "Chi nhánh Quận 1",
+      "address": "12 Lê Lợi, Quận 1, TP.HCM",
+      "distance": "1.2km",
+      "hours": "06:30 - 22:00"
+    },
+    {
+      "id": "phunhuan",
+      "name": "Chi nhánh Phú Nhuận",
+      "address": "45 Hoa Đào, Phú Nhuận, TP.HCM",
+      "distance": "3.5km",
+      "hours": "06:00 - 21:30"
+    },
+    {
+      "id": "thaodien",
+      "name": "Chi nhánh Thảo Điền",
+      "address": "88 Quốc Hương, TP. Thủ Đức",
+      "distance": "6.0km",
+      "hours": "07:00 - 22:00"
+    }
+  ],
+  "story": {
+    "established": 2012,
+    "mission": "Mang tinh hoa bún bò Huế đến với mọi người bằng nguồn nguyên liệu sạch và tinh thần phục vụ tận tâm.",
+    "values": [
+      "Chắt lọc nguyên liệu chuẩn Huế",
+      "Giữ gìn hương vị gia truyền",
+      "Phục vụ chân thành"
+    ]
+  },
+  "timeline": [
+    {
+      "year": 2012,
+      "title": "Khởi đầu An Nhiên",
+      "description": "Quán nhỏ đầu tiên mở tại Huế với 20 chỗ ngồi."
+    },
+    {
+      "year": 2017,
+      "title": "Có mặt tại Sài Gòn",
+      "description": "Mang hương vị quê hương đến trung tâm TP.HCM."
+    },
+    {
+      "year": 2023,
+      "title": "Chuỗi 3 chi nhánh",
+      "description": "Phục vụ hơn 500 tô bún mỗi ngày cùng dịch vụ giao tận nơi."
+    }
+  ]
+}
