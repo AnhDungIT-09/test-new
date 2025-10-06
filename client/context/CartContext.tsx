@@ -33,31 +33,15 @@ const CartContext = createContext<CartContextValue | null>(null);
 
 const STORAGE_KEY = "bunbo-cart";
 
-const createToastId = () => {
-  if (
-    typeof crypto !== "undefined" &&
-    typeof crypto.randomUUID === "function"
-  ) {
-    return crypto.randomUUID();
-  }
-  return `${Date.now()}-${Math.random().toString(16).slice(2)}`;
-};
-
 const loadInitialCart = (): CartItem[] => {
-  if (typeof window === "undefined") {
-    return [];
-  }
+  if (typeof window === "undefined") return [];
 
   try {
     const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (!stored) {
-      return [];
-    }
+    if (!stored) return [];
 
     const parsed = JSON.parse(stored) as CartItem[];
-    if (!Array.isArray(parsed)) {
-      return [];
-    }
+    if (!Array.isArray(parsed)) return [];
 
     return parsed.filter(
       (item) =>
@@ -79,121 +63,73 @@ interface CartProviderProps {
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [items, setItems] = useState<CartItem[]>(loadInitialCart);
 
+  // Lưu vào localStorage mỗi khi items thay đổi
   useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
+    if (typeof window === "undefined") return;
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
   }, [items]);
 
+  // ======== ADD ITEM ========
   const addItem = useCallback(
     (item: Omit<CartItem, "quantity">, quantity: number = 1) => {
-      if (quantity <= 0) {
-        return;
-      }
-
-      let notification: {
-        title: string;
-        description?: string;
-        variant?: "success" | "info";
-        id: string;
-      } | null = null;
+      if (quantity <= 0) return;
 
       setItems((prev) => {
         const existing = prev.find((cartItem) => cartItem.id === item.id);
         if (existing) {
           const nextQuantity = Math.min(existing.quantity + quantity, 99);
-          notification = {
-            title: `${item.name}`,
-            description: `Đã cập nhật số lượng (${nextQuantity}) trong giỏ hàng.`,
-            variant: "info",
-            id: createToastId(),
-          };
+          toast.success("Đã cập nhật giỏ hàng", { description: item.name });
+
           return prev.map((cartItem) =>
             cartItem.id === item.id
-              ? {
-                  ...cartItem,
-                  quantity: nextQuantity,
-                }
+              ? { ...cartItem, quantity: nextQuantity }
               : cartItem,
           );
         }
 
-        notification = {
-          title: `${item.name}`,
-          description: "Đã thêm vào giỏ hàng.",
-          variant: "success",
-          id: createToastId(),
-        };
-
-        return [
-          ...prev,
-          {
-            ...item,
-            quantity: Math.min(quantity, 99),
-          },
-        ];
+        toast.success("Đã thêm vào giỏ hàng", { description: item.name });
+        return [...prev, { ...item, quantity: Math.min(quantity, 99) }];
       });
-
-      if (notification) {
-        const { title, description, variant = "success", id } = notification;
-        const showToast = variant === "info" ? toast.info : toast.success;
-        showToast(title, {
-          description,
-          id,
-        });
-      }
     },
     [],
   );
 
+  // ======== UPDATE QUANTITY ========
   const updateQuantity = useCallback((id: string, quantity: number) => {
-    let removedItem: CartItem | null = null;
-
-    setItems((prev) =>
-      prev
-        .map((item) => {
-          if (item.id !== id) {
-            return item;
-          }
-
-          const nextQuantity = Math.max(0, Math.min(quantity, 99));
-          if (nextQuantity === 0) {
-            removedItem = item;
-          }
-
-          return {
-            ...item,
-            quantity: nextQuantity,
-          };
-        })
-        .filter((item) => item.quantity > 0),
-    );
-
-    if (removedItem) {
-      toast("Đã xóa món khỏi giỏ hàng", {
-        description: removedItem.name,
-        id: createToastId(),
-      });
-    }
-  }, []);
-
-  const removeItem = useCallback((id: string) => {
-    let removedItem: CartItem | null = null;
-
     setItems((prev) => {
-      removedItem = prev.find((item) => item.id === id) ?? null;
-      return prev.filter((item) => item.id !== id);
-    });
+      const item = prev.find((i) => i.id === id);
+      if (!item) return prev;
 
-    if (removedItem) {
-      toast("Đã xóa món khỏi giỏ hàng", {
-        description: removedItem.name,
+      const nextQuantity = Math.max(0, Math.min(quantity, 99));
+
+      // Nếu giảm xuống 0 → xóa khỏi giỏ + hiện toast
+      if (nextQuantity === 0) {
+        toast("Đã xóa món khỏi giỏ hàng", { description: item.name });
+        return prev.filter((i) => i.id !== id);
+      }
+
+      toast.success("Đã cập nhật số lượng", {
+        description: `${item.name}: ${nextQuantity}`,
       });
-    }
+
+      return prev.map((i) =>
+        i.id === id ? { ...i, quantity: nextQuantity } : i,
+      );
+    });
   }, []);
 
+  // ======== REMOVE ITEM ========
+  const removeItem = useCallback((id: string) => {
+    setItems((prev) => {
+      const item = prev.find((i) => i.id === id);
+      if (item) {
+        toast("Đã xóa món khỏi giỏ hàng", { description: item.name });
+      }
+      return prev.filter((i) => i.id !== id);
+    });
+  }, []);
+
+  // ======== CLEAR CART ========
   const clearCart = useCallback(() => {
     setItems((prev) => {
       if (prev.length > 0) {
@@ -205,6 +141,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     });
   }, []);
 
+  // ======== COMPUTED VALUES ========
   const subtotal = useMemo(
     () => items.reduce((total, item) => total + item.price * item.quantity, 0),
     [items],
@@ -220,16 +157,15 @@ export const CartProvider = ({ children }: CartProviderProps) => {
       removeItem,
       clearCart,
     }),
-    [addItem, clearCart, items, removeItem, subtotal, updateQuantity],
+    [items, subtotal, addItem, updateQuantity, removeItem, clearCart],
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
 
+// ======== HOOK ========
 export const useCart = () => {
   const context = useContext(CartContext);
-  if (!context) {
-    throw new Error("useCart must be used within a CartProvider");
-  }
+  if (!context) throw new Error("useCart must be used within a CartProvider");
   return context;
 };

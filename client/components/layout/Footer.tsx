@@ -14,7 +14,7 @@ export const Footer = () => {
       <div className="container grid gap-10 py-12 md:grid-cols-[1.25fr,1fr,1fr]">
         <div className="space-y-4">
           <h3 className="font-display text-2xl text-primary">
-            Bún Bò Huế An Nhiên
+            Bún Bò Huế 1991
           </h3>
           <p className="text-sm text-foreground/70">
             Hương vị Huế đậm đà, chuẩn vị truyền thống với nước dùng ninh 18
@@ -76,8 +76,8 @@ export const Footer = () => {
         </div>
       </div>
       <div className="border-t border-border/40 bg-background/70 py-5 text-center text-xs text-foreground/60">
-        © {new Date().getFullYear()} Bún Bò Huế An Nhiên. Giữ trọn tinh hoa ẩm
-        thực xứ Huế.
+        © {new Date().getFullYear()} Bún Bò Huế 1991. Giữ trọn tinh hoa ẩm thực
+        xứ Huế.
       </div>
     </footer>
   );

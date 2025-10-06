@@ -30,7 +30,7 @@ export const Header = () => {
           <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
             <Leaf className="h-5 w-5" />
           </span>
-          Bún Bò Huế An Nhiên
+          Bún Bò Huế 1991
         </Link>
         <nav className="hidden lg:flex items-center gap-8">
           {NAV_ITEMS.map((item) => (

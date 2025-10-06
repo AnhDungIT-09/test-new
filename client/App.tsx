@@ -14,6 +14,8 @@ import About from "./pages/About";
 import Checkout from "./pages/Checkout";
 import OrderSuccess from "./pages/OrderSuccess";
 import NotFound from "./pages/NotFound";
+import { ScrollToTop } from "./components/ScrollToTop";
+import MomoResult from "./pages/MomoResult";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +25,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <CartProvider>
           <Routes>
             <Route element={<MainLayout />}>
@@ -32,6 +35,7 @@ const App = () => (
               <Route path="cart" element={<Cart />} />
               <Route path="checkout" element={<Checkout />} />
               <Route path="order-success" element={<OrderSuccess />} />
+              <Route path="momo-result" element={<MomoResult />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

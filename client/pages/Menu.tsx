@@ -3,6 +3,7 @@ import { ArrowRight, Filter, Flame } from "lucide-react";
 import menuData from "@/data/menu.json";
 import { useCart } from "@/context/CartContext";
 import { formatCurrency } from "@/lib/format";
+import { toast } from "sonner";
 
 const categoryLabels: Record<string, string> = {
   all: "Tất cả",
@@ -113,7 +114,13 @@ export default function Menu() {
               >
                 {getCategoryLabel(category)}
                 {category !== "all" && (
-                  <span className="text-xs text-primary/80">
+                  <span
+                    className={`text-xs ${
+                      activeCategory === category
+                        ? "text-primary-foreground" // Khi active → trắng
+                        : "text-primary/80" // Khi không active → như cũ
+                    }`}
+                  >
                     {
                       menuData.dishes.filter(
                         (dish) => dish.category === category,
@@ -248,6 +255,7 @@ export default function Menu() {
                     {formatCurrency(combo.price)}
                   </span>
                 </div>
+
                 <button
                   type="button"
                   onClick={() =>
@@ -261,7 +269,7 @@ export default function Menu() {
                       1,
                     )
                   }
-                  className="mt-auto inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-xs font-semibold text-primary transition hover:border-primary hover:bg-primary/10"
+                  className="w-fit mt-auto inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-xs font-semibold text-primary transition hover:border-primary hover:bg-primary/10"
                 >
                   Thêm vào giỏ ngay
                   <ArrowRight className="h-3 w-3" />

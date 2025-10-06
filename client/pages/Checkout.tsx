@@ -171,13 +171,34 @@ export default function Checkout() {
             "Nhân viên sẽ thu tiền khi giao món tại địa chỉ của bạn.",
         });
       } else {
-        toast.info("Đã chọn thanh toán qua MoMo", {
-          description:
-            "Sau khi xác nhận đơn, chúng tôi sẽ gửi mã QR MoMo để bạn thanh toán.",
-        });
+        // toast.info("Đã chọn thanh toán qua MoMo", {
+        //   description:
+        //     "Sau khi xác nhận đơn, chúng tôi sẽ gửi mã QR MoMo để bạn thanh toán.",
+        // });
       }
     }
   }, [watchedPaymentMethod]);
+
+  const handlePayMomo = async () => {
+    const res = await fetch(
+      "https://dinhdungit.click/BackEndZaloFnB/api/momo/create_momo_payment.php",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ amount: String("50000") }),
+      },
+    );
+
+    const data = await res.json();
+    console.log(data);
+    if (data?.payUrl) {
+      window.location.href = data.payUrl; // chuyển người dùng đến MoMo
+    } else {
+      alert("Không tạo được thanh toán MoMo");
+      console.error(data);
+      setIsSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     if (items.length > 0 && confirmation) {
@@ -214,42 +235,48 @@ export default function Checkout() {
     const orderCode = `BB${Date.now().toString().slice(-6).toUpperCase()}`;
     const orderItems = items.map((item) => ({ ...item }));
 
-    const order: OrderConfirmation = {
-      code: orderCode,
-      createdAt: new Date().toISOString(),
-      customer: {
-        name: values.name.trim(),
-        phone: trimmedPhone,
-        email: values.email?.trim() ?? "",
-        address: values.address.trim(),
-        note: values.note?.trim() ?? "",
-        branchId: branch?.id ?? values.branchId,
-        branchName: branch?.name ?? "",
+    console.log(watchedPaymentMethod);
+
+    if (watchedPaymentMethod === "cod") {
+      const order: OrderConfirmation = {
+        code: orderCode,
+        createdAt: new Date().toISOString(),
+        customer: {
+          name: values.name.trim(),
+          phone: trimmedPhone,
+          email: values.email?.trim() ?? "",
+          address: values.address.trim(),
+          note: values.note?.trim() ?? "",
+          branchId: branch?.id ?? values.branchId,
+          branchName: branch?.name ?? "",
+          paymentMethod: values.paymentMethod,
+          paymentLabel: payment?.label ?? "",
+        },
+        items: orderItems,
+        subtotal,
+        deliveryFee,
+        total,
+      };
+
+      await new Promise((resolve) => setTimeout(resolve, 700));
+
+      setConfirmation(order);
+      clearCart();
+      toast.success(`Đơn hàng ${orderCode} đã được ghi nhận!`);
+      form.reset({
+        name: "",
+        phone: "",
+        email: "",
+        address: "",
+        note: "",
+        branchId: values.branchId,
         paymentMethod: values.paymentMethod,
-        paymentLabel: payment?.label ?? "",
-      },
-      items: orderItems,
-      subtotal,
-      deliveryFee,
-      total,
-    };
-
-    await new Promise((resolve) => setTimeout(resolve, 700));
-
-    setConfirmation(order);
-    clearCart();
-    toast.success(`Đơn hàng ${orderCode} đã được ghi nhận!`);
-    form.reset({
-      name: "",
-      phone: "",
-      email: "",
-      address: "",
-      note: "",
-      branchId: values.branchId,
-      paymentMethod: values.paymentMethod,
-    });
-    setIsSubmitting(false);
-    navigate("/order-success", { state: { order } });
+      });
+      setIsSubmitting(false);
+      navigate("/order-success", { state: { order } });
+    } else if (watchedPaymentMethod === "momo") {
+      handlePayMomo();
+    }
   };
 
   if (items.length === 0 && !confirmation) {
@@ -297,8 +324,8 @@ export default function Checkout() {
           </h1>
           <p className="mt-2 max-w-2xl text-sm text-foreground/70 md:text-base">
             Điền thông tin nhận hàng, chọn chi nhánh gần nhất và phương thức
-            thanh toán phù hợp. Nhân viên An Nhiên sẽ liên hệ trong 2 phút để
-            xác nhận đơn.
+            thanh toán phù hợp. Nhân viên 1991 sẽ liên hệ trong 2 phút để xác
+            nhận đơn.
           </p>
         </div>
         <Badge className="w-fit rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-primary">

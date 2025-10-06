@@ -19,6 +19,7 @@ export default function Cart() {
   const { items, subtotal, updateQuantity, removeItem, clearCart } = useCart();
   const deliveryFee = subtotal > 0 ? (subtotal >= 250000 ? 0 : 15000) : 0;
   const total = subtotal + deliveryFee;
+  const { addItem } = useCart();
 
   return (
     <div className="container py-16">

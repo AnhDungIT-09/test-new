@@ -48,7 +48,7 @@ export default function Index() {
               Hương vị Huế truyền thống
             </span>
             <h1 className="font-display text-4xl leading-tight text-primary md:text-5xl lg:text-6xl">
-              Bún bò Huế An Nhiên
+              Bún bò Huế 1991
               <span className="block text-foreground/80">
                 Đậm đà vị sả, ngọt thanh nước dùng
               </span>
@@ -383,8 +383,8 @@ export default function Index() {
                 </div>
               </div>
               <p className="mt-3 max-w-xs text-xs text-foreground/70">
-                Đầu bếp Trí Nguyễn - người mang công th���c gia truyền từ Huế
-                vào Sài Gòn, đảm bảo mỗi tô bún đều chuẩn vị.
+                Đầu bếp Trí Nguyễn - người mang công thức gia truyền từ Huế vào
+                Sài Gòn, đảm bảo mỗi tô bún đều chuẩn vị.
               </p>
             </div>
           </div>

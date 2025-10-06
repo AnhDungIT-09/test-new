@@ -1,5 +1,5 @@
 import type { ComponentType } from "react";
-import type { ComponentType } from "react";
+import type { LucideIcon } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -131,7 +131,7 @@ export default function OrderSuccess() {
           </h1>
           <p className="max-w-lg text-sm text-foreground/70 md:text-base">
             Vui lòng kiểm tra lại bước thanh toán hoặc đặt món mới. Nếu bạn cần
-            hỗ trợ, An Nhiên luôn sẵn sàng giúp đỡ.
+            hỗ trợ, 1991 luôn sẵn sàng giúp đỡ.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Button
@@ -185,7 +185,7 @@ export default function OrderSuccess() {
   const paymentDescription =
     order.payment?.description ??
     (paymentMethod === "cod"
-      ? "Vui lòng chuẩn bị ti���n mặt để giao dịch nhanh chóng."
+      ? "Vui lòng chuẩn bị tiền mặt để giao dịch nhanh chóng."
       : "Bạn sẽ nhận được mã QR MoMo ngay sau cuộc gọi xác nhận.");
 
   const customerItems = [
@@ -253,8 +253,8 @@ export default function OrderSuccess() {
                 Đặt hàng thành công!
               </h1>
               <p className="max-w-2xl text-sm text-foreground/80 md:text-base">
-                Cảm ơn bạn đã tin tưởng An Nhiên. Chúng tôi đang chuẩn bị món và
-                sẽ liên hệ trong ít phút để xác nhận thời gian giao hàng.
+                Cảm ơn bạn đã tin tưởng 1991. Chúng tôi đang chuẩn bị món và sẽ
+                liên hệ trong ít phút để xác nhận thời gian giao hàng.
               </p>
             </div>
           </div>
@@ -355,7 +355,7 @@ export default function OrderSuccess() {
               <StepItem
                 index={1}
                 title="Sẵn sàng nghe điện thoại"
-                description="Nhân viên xác nhận đơn sẽ gọi từ số tổng đài An Nhiên trong vòng 2 phút."
+                description="Nhân viên xác nhận đơn sẽ gọi từ số tổng đài 1991 trong vòng 2 phút."
               />
               <StepItem
                 index={2}
@@ -401,8 +401,8 @@ export default function OrderSuccess() {
               Cần hỗ trợ thêm?
             </p>
             <p className="mt-2 text-sm text-foreground/70">
-              Gọi ngay hotline <span className="font-semibold">1900 6686</span>
-              hoặc nhắn qua Zalo Official của An Nhiên để được hỗ trợ ngay.
+              Gọi ngay hotline <span className="font-semibold">1900 6686 </span>
+              hoặc nhắn qua Zalo Official của 1991 để được hỗ trợ ngay.
             </p>
           </div>
         </aside>
@@ -428,7 +428,7 @@ export default function OrderSuccess() {
 }
 
 type InfoItem = {
-  icon: ComponentType<{ className?: string }>;
+  icon: LucideIcon;
   label: string;
   value: string;
 };

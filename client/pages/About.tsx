@@ -20,13 +20,13 @@ export default function About() {
         <div className="container grid gap-12 py-20 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
           <div className="space-y-6">
             <span className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-              Câu chuyện An Nhiên
+              Câu chuyện 1991
             </span>
             <h1 className="font-display text-4xl text-foreground md:text-5xl">
               Gìn giữ hương vị chuẩn Huế từ 2012
             </h1>
             <p className="text-sm text-foreground/70 md:text-base">
-              An Nhiên được sáng lập bởi gia đình chị Hà và anh Trí, những người
+              1991 được sáng lập bởi gia đình chị Hà và anh Trí, những người
               sinh ra tại Huế với mong muốn mang hương vị quê nhà đến mọi người.
               Từ quán nhỏ đầu tiên, chúng tôi đã giữ trọn tinh thần ấm áp và sự
               tỉ mỉ trong từng tô bún.
@@ -88,9 +88,9 @@ export default function About() {
               Từ Huế đến Sài Gòn
             </h3>
             <p className="mt-3 text-sm text-foreground/70">
-              Mỗi chi nhánh của An Nhiên đều giữ thiết kế ấm cúng với ánh đèn
-              vàng, bàn gỗ và mùi sả thơm dịu. Đội ngũ hơn 40 nhân viên được đào
-              tạo kỹ lưỡng để mang đến tr���i nghiệm trọn vẹn nhất.
+              Mỗi chi nhánh của 1991 đều giữ thiết kế ấm cúng với ánh đèn vàng,
+              bàn gỗ và mùi sả thơm dịu. Đội ngũ hơn 40 nhân viên được đào tạo
+              kỹ lưỡng để mang đến trải nghiệm trọn vẹn nhất.
             </p>
             <div className="mt-6 flex flex-col gap-4 text-sm text-foreground/70">
               <span className="inline-flex items-center gap-3">
